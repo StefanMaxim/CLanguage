@@ -10,7 +10,7 @@ pre-processor, compiler, assembler, linker, executable
 
 
 compiler flags:
-`> gcc -std=c99 -g -Wall -Wshadow --pedantic -Wvla -Werror`
+`> gcc -std=c99 -g -Wall -Wextra -Wshadow --pedantic -Wvla -Werror`
 
 std=c89 means use the 1989 standard for c
 
