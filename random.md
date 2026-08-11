@@ -59,6 +59,18 @@ Solution:
 pointer value is lvalue, pointer is rvalue.
 lvalue is assigned an rvalue, and lvalues decay to rvalue when used in assignment.
 
+KEY: In the AST(look at the notes) an l-value yields an address, and an r-value yields a value;
+
+exe:
+int x = 4; 
+here, x is the l-value and 4 is the rvalue.
+
+x is a integer object in memory, and 4 is a constant,
+the constant variable will yield the value "4", and the identifier of x will yield the address of the 
+integer object that it represents. From there, you just write the value to the address.
+That is key to understanding how C works
+
+
 when you assign a pointer to something or really anything to anything else, you are just writing new data to its
 area in memory:
 int x = 4; you are just writing 4 at the memory address of x.
