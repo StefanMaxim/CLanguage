@@ -166,3 +166,27 @@ build-essentials just has a bunch of useful executables like gcc and libc, very 
 gdb is gnu debugger, good for debugging c code
 valgrind is for memory checks, makes sure no memory leaks (allocate memory, but never free it) (remember to compile in debug mode)
 
+## Big Picture:
+
+int x = 42;
+
+object = In C, an object is a region of memory that represents 
+a value
+
+value = an abstract idea, exe: the number 1, specifically the idea 
+of "1". (material vs spirit metaphysical stuff)
+
+expression: ways to represent the idea of something:
+exe: "1" this symbol is an expression of the idea of 1, so it
+"one" or 2-1, or any other symbols we interpret as representatives of
+the abstract idea
+
+identifier: the name x, which can be used to reference the object in 
+memory. 
+
+type: "int" in this case, which defines the set of values that are
+acceptable as values, as well as other general compiler-side 
+metadata like size, interpretation, etc
+
+int is the type, which is a class/set of values, but also defines
+things like the size of the obect
