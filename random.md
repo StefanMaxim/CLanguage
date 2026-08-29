@@ -190,3 +190,18 @@ metadata like size, interpretation, etc
 
 int is the type, which is a class/set of values, but also defines
 things like the size of the obect
+
+
+
+## Language Server
+When you type in C, (AT LEAST IN VSCODE)
+notice how it is highlighted, and tells you info about syntax, structure, types, functions, vars, includes, etc
+
+THis is done by the **Language Server**, usually **clangd** or microsoft's C/C++ extension
+Works almost like the C compiler, in that it
+1. Sees changes in code
+2. parses the source
+3. Builds AST + symbol/type info
+4. Analyses the code
+5. returns errors, defs, type info
+6. VSCODE displays it

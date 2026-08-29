@@ -55,7 +55,14 @@ Breakdown:
 
     - PTR is pointer, it tells the assembler that the thing inside the [] is a memory address
 
-    - [rbp-4] = address of the Register Base Pointer minus 4 (look at stack notes to understand why) (loosely, new function means new stack frame, and the first thing you do it push the current rbp on the stack (representing the address where the previous rbp is stored in the above stack). 
+    - [rbp-4] = address of the Register Base Pointer minus 4 (look at stack notes to understand why) (loosely, new function means new stack frame, and the first thing you do (after pushing the return address) is push the current rbp on the stack (representing the address where the previous rbp is stored in the above stack). 
+
+    This is useful, since while the RSP keeps moving as you add vars, RBP is anchored in your function, and is before any
+    of your locals. (NOTE: in reality, for most compiled languages they just use RSP because RSP only moves ONCE to claim the
+    space it needs and then just sits at a fixed point at the bottom of your function, since the sourse code tells you exactly how much to claim, so in reality it will likely use a RSP offset that the compiler knows because it keeps track of all the locals in that frame in their size. Thus, it makes more sense to use just the RSP for this, since its also anchored, just at the top of the stack, and free up the RBP for computation)
+
+    (BEFORE ANY EXECUTION OF THE FUCTION BODY, IT FIRST CLAIMS SPACE FOR DEFINED LOCALS)
+
     Thus, you decriment RSP by 8, then write RBP to RSP (will print up, since writing at 0x1000, writes 0x1000 to 0x1007)
     Lastly, you set the RBP to the Current RSP, which is conveniently at the place in memory where the previous
     rbp was written.
@@ -227,13 +234,13 @@ typedef struct {
     int age;
 } Person;
 
-Here, you created a new struct, with the tag "struct Person" in the struct namespace
+Here, you created a new struct, with the tag "" in the struct namespace
 the anonymous struct, now aliased to "Person" now establishes the layout:
 Beginning of Person
         │
         ▼
 ┌────────────────────┐
-│ pointer to name    │
+│ char ptr to name   │
 ├────────────────────┤
 │ integer age        │
 ├────────────────────┤
@@ -264,7 +271,7 @@ Type = describes the set of values that an object can have and its size in memor
 
 Ientifier = the literal "x" used to refer to the object
 
-struct Person *p = malloc(sizeof(struct Person));
+struct Person *p = malloc(sizeof(struct Person)); //now, p stores an address, which the compiler sees as struct Person*
 
 **SIZEOF**
 one of few functions that do not decay arrays and other objects to pointers

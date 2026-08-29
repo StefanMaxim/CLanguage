@@ -20,7 +20,7 @@ int main()
 The final optimized version can be:
 
 ```assembly
-xor eax, eax
+MOV DWORD PTR [rbp-4]
 ret
 ```
 
