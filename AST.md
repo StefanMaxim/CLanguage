@@ -113,7 +113,7 @@ a[i]
 foo()
 x = 5
 
-These expressions are not values on their own, but **yield values** when computed
+These expressions are not values on their own, but **MAY yield values** when computed
 
 Expression have
 1. A type (like above with "declaration with an initializer")
