@@ -55,6 +55,8 @@ Person* p;, and can you set that equal to what?
 
 ## types, like long
 
+_t means type in C
+
 integer types, their size, their format specifier
 size_t = unsigned long int?
 long is a type specifier, meaning it is used in tandem with a fundamental type to specify behavior
@@ -205,3 +207,4 @@ Works almost like the C compiler, in that it
 4. Analyses the code
 5. returns errors, defs, type info
 6. VSCODE displays it
+
